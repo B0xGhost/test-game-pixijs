@@ -1,6 +1,6 @@
 const Application = PIXI.Application;
 let score = 0;
-let speed = 1;
+let speed = 2;
 
 //sets our screen size
 const app = new Application({
@@ -44,14 +44,14 @@ function loop(delta) {
   rock.rotation += 0.05;
   rock.position.x -= speed;
   if (rock.position.x <= 0) {
-    rock.position.set(1500, Math.floor(Math.random() * 800));
+    rock.position.set(app.screen.width, Math.floor(Math.random() * 800));
     score += 1;
     speed += 1;
     scoreBoard.text = `Score: ${score}`;
   }
   if (hitDetect(susMan, rock)) {
     let finalScore = new PIXI.Text(`Final Score : ${score}`, finalStyle);
-    finalScore.position.set(360, 100);
+    finalScore.position.set(600, 200);
     app.ticker.stop();
     app.stage.addChild(dead);
     music.stop();
@@ -74,12 +74,13 @@ function hitDetect(a, b) {
 }
 
 //death screen stuff
-dead.scale.set(0.9, 0.9);
-dead.position.set(-110, -90);
+dead.height = app.screen.height;
+dead.width = app.screen.width;
+// dead.position.set(-110, -90);
 
 //our params for our rock
 rock.scale.set(0.3, 0.3);
-rock.position.set(1500, Math.floor(Math.random() * 800));
+rock.position.set(app.screen.width, Math.floor(Math.random() * 800));
 rock.anchor.set(0.5, 0.5);
 
 //this gives our susMan size, its starting position, and sets its anchor point to the middle so it spinning doesnt look weird
