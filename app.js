@@ -1,5 +1,6 @@
 const Application = PIXI.Application;
 let score = 0;
+let speed = 1;
 
 //sets our screen size
 const app = new Application({
@@ -41,10 +42,11 @@ app.ticker.add((delta) => loop(delta));
 function loop(delta) {
   susMan.rotation += 0.01;
   rock.rotation += 0.05;
-  rock.position.x -= 4;
+  rock.position.x -= speed;
   if (rock.position.x <= 0) {
     rock.position.set(1500, Math.floor(Math.random() * 800));
     score += 1;
+    speed += 1;
     scoreBoard.text = `Score: ${score}`;
   }
   if (hitDetect(susMan, rock)) {
