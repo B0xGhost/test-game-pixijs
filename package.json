@@ -1,0 +1,17 @@
+{
+  "name": "test-game-pixijs",
+  "version": "1.0.0",
+  "description": "test game",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pixi/graphics-extras": "^6.3.0",
+    "howler": "^2.2.3",
+    "pixi.js": "^6.3.0",
+    "webpack": "^5.72.0"
+  }
+}
